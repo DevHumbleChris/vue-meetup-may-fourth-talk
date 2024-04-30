@@ -8,7 +8,7 @@ useHead({
 
 <template>
   <section>
-    <div class="px-8 py-12 mx-auto md:px-12 lg:px-32 max-w-7xl">
+    <div class="px-8 py-12 mx-auto md:px-12 xl:px-32 max-w-7xl">
       <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
         <div class="p-2 border bg-gray-50 rounded-3xl">
           <div class="p-10 bg-white border shadow-lg rounded-3xl">

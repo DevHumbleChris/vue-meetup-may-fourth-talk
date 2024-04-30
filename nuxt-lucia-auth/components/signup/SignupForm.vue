@@ -40,6 +40,10 @@ const form = useForm({
   validationSchema: formSchema,
 });
 
+const isSubmitting = computed(() => {
+  return form.isSubmitting;
+});
+
 const onSubmit = form.handleSubmit((values) => {
   console.log("Form submitted!", values);
 });

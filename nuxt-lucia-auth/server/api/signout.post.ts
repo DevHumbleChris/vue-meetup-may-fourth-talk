@@ -1,3 +1,5 @@
+import { lucia } from "../utils/auth";
+
 export default eventHandler(async (event) => {
   if (!event.context.session) {
     throw createError({
