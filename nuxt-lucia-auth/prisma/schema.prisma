@@ -47,7 +47,7 @@ model User {
 model Profile {
   id       String @id @default(uuid())
   name     String
-  imageUrl String @default("https://res.cloudinary.com/dfa1yoc1v/image/upload/v1712236337/itwzledbthxc76nzt8sw.png") @db.Text
+  imageUrl String @db.Text
   email    String @db.Text
   location String @db.Text
   username String @db.Text
