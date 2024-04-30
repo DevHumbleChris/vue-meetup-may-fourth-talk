@@ -16,7 +16,12 @@ import { Input } from "~/components/ui/input";
 
 const formSchema = toTypedSchema(
   z.object({
-    username: z.string().min(2).max(50),
+    email: z.string().email({
+      message: "Invalid Email!",
+    }),
+    password: z.string().min(6, {
+      message: "6 characters minimum",
+    }),
   })
 );
 
@@ -30,39 +35,36 @@ const onSubmit = form.handleSubmit((values) => {
 </script>
 
 <template>
-  <form>
-    <div class="space-y-3">
-      <div>
-        <label for="name" class="block mb-3 text-sm font-medium text-black">
-          First name
-        </label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Your name"
-          class="block w-full h-12 px-4 py-2 text-blue-500 duration-200 border rounded-lg appearance-none bg-chalk border-zinc-300 placeholder-zinc-300 focus:border-zinc-300 focus:outline-none focus:ring-zinc-300 sm:text-sm"
-        />
-      </div>
-      <div class="col-span-full">
-        <label for="password" class="block mb-3 text-sm font-medium text-black">
-          Password
-        </label>
-        <input
-          id="password"
-          class="block w-full h-12 px-4 py-2 text-blue-500 duration-200 border rounded-lg appearance-none bg-chalk border-zinc-300 placeholder-zinc-300 focus:border-zinc-300 focus:outline-none focus:ring-zinc-300 sm:text-sm"
-          placeholder="Type password here..."
-          type="password"
-        />
-      </div>
-      <div class="col-span-full">
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black"
-        >
-          Sign in
-        </button>
-      </div>
-    </div>
+  <form @submit="onSubmit" class="space-y-2">
+    <FormField v-slot="{ componentField }" name="email">
+      <FormItem>
+        <FormLabel>Email</FormLabel>
+        <FormControl>
+          <Input
+            type="email"
+            placeholder="johndoe@example.com"
+            class="block w-full h-12 px-4 py-2 text-zinc-700 duration-200 border rounded-lg appearance-none bg-chalk border-zinc-300 placeholder-zinc-300 focus:border-zinc-300 focus:outline-none focus:ring-zinc-300 sm:text-sm"
+            v-bind="componentField"
+          />
+        </FormControl>
+        <FormMessage />
+      </FormItem>
+    </FormField>
+    <FormField v-slot="{ componentField }" name="password">
+      <FormItem>
+        <FormLabel>Password</FormLabel>
+        <FormControl>
+          <Input
+            type="password"
+            placeholder="eg. mysecretkey"
+            class="block w-full h-12 px-4 py-2 text-zinc-700 duration-200 border rounded-lg appearance-none bg-chalk border-zinc-300 placeholder-zinc-300 focus:border-zinc-300 focus:outline-none focus:ring-zinc-300 sm:text-sm"
+            v-bind="componentField"
+          />
+        </FormControl>
+        <FormMessage />
+      </FormItem>
+    </FormField>
+    <Button type="submit" class="w-full"> Sign in </Button>
     <div class="mt-6">
       <p
         class="flex mx-auto text-sm gap-x-1 font-medium leading-tight text-center text-black"

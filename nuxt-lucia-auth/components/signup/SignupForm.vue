@@ -6,7 +6,6 @@ import * as z from "zod";
 import { Button } from "~/components/ui/button";
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -47,7 +46,7 @@ const onSubmit = form.handleSubmit((values) => {
 </script>
 
 <template>
-  <form @submit="onSubmit" class="space-y-4">
+  <form @submit="onSubmit" class="space-y-2">
     <FormField v-slot="{ componentField }" name="email">
       <FormItem>
         <FormLabel>Email</FormLabel>
@@ -90,7 +89,7 @@ const onSubmit = form.handleSubmit((values) => {
         <FormMessage />
       </FormItem>
     </FormField>
-    <Button type="submit" class="w-full"> Sign in </Button>
+    <Button type="submit" class="w-full"> Create Account </Button>
     <div class="mt-6">
       <p
         class="flex mx-auto gap-x-1 text-sm font-medium leading-tight text-center text-black"
