@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  titleTemplate: "%s - Signup",
+});
+</script>
 
 <template>
   <section>
