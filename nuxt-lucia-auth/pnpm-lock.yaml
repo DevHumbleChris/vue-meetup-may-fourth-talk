@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@lucia-auth/adapter-prisma':
         specifier: ^4.0.1
-        version: 4.0.1(@prisma/client@5.13.0)(lucia@3.2.0)
+        version: 4.0.1(@prisma/client@5.13.0(prisma@5.13.0))(lucia@3.2.0)
       '@vee-validate/zod':
         specifier: ^4.12.6
         version: 4.12.6(vue@3.4.26(typescript@5.4.5))
@@ -38,6 +38,9 @@ importers:
       oslo:
         specifier: ^1.2.0
         version: 1.2.0
+      prisma:
+        specifier: ^5.13.0
+        version: 5.13.0
       radix-vue:
         specifier: ^1.7.2
         version: 1.7.3(vue@3.4.26(typescript@5.4.5))
@@ -59,6 +62,9 @@ importers:
       vue-router:
         specifier: ^4.3.0
         version: 4.3.2(vue@3.4.26(typescript@5.4.5))
+      vue3-toastify:
+        specifier: ^0.2.1
+        version: 0.2.1(vue@3.4.26(typescript@5.4.5))
       zod:
         specifier: ^3.23.5
         version: 3.23.5
@@ -1040,6 +1046,21 @@ packages:
     peerDependenciesMeta:
       prisma:
         optional: true
+
+  '@prisma/debug@5.13.0':
+    resolution: {integrity: sha512-699iqlEvzyCj9ETrXhs8o8wQc/eVW+FigSsHpiskSFydhjVuwTJEfj/nIYqTaWFYuxiWQRfm3r01meuW97SZaQ==}
+
+  '@prisma/engines-version@5.13.0-23.b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b':
+    resolution: {integrity: sha512-AyUuhahTINGn8auyqYdmxsN+qn0mw3eg+uhkp8zwknXYIqoT3bChG4RqNY/nfDkPvzWAPBa9mrDyBeOnWSgO6A==}
+
+  '@prisma/engines@5.13.0':
+    resolution: {integrity: sha512-hIFLm4H1boj6CBZx55P4xKby9jgDTeDG0Jj3iXtwaaHmlD5JmiDkZhh8+DYWkTGchu+rRF36AVROLnk0oaqhHw==}
+
+  '@prisma/fetch-engine@5.13.0':
+    resolution: {integrity: sha512-Yh4W+t6YKyqgcSEB3odBXt7QyVSm0OQlBSldQF2SNXtmOgMX8D7PF/fvH6E6qBCpjB/yeJLy/FfwfFijoHI6sA==}
+
+  '@prisma/get-platform@5.13.0':
+    resolution: {integrity: sha512-B/WrQwYTzwr7qCLifQzYOmQhZcFmIFhR81xC45gweInSUn2hTEbfKUPd2keAog+y5WI5xLAFNJ3wkXplvSVkSw==}
 
   '@replit/codemirror-indentation-markers@6.5.1':
     resolution: {integrity: sha512-9MfwbNdARjwx0X+duBgeJJ7vnpyHWfEwk+p4FlWVs2ntvSyQmKI/FH2iEfEUOMyafIiQxzyLn0y2RS5f54hN5A==}
@@ -3816,6 +3837,11 @@ packages:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
 
+  prisma@5.13.0:
+    resolution: {integrity: sha512-kGtcJaElNRAdAGsCNykFSZ7dBKpL14Cbs+VaQ8cECxQlRPDjBlMHNFYeYt0SKovAVy2Y65JXQwB3A5+zIQwnTg==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+
   proc-log@3.0.0:
     resolution: {integrity: sha512-++Vn7NS4Xf9NacaU9Xq3URUuqZETPsf8L4j5/ckhaRYsfPeRyzGw+iDjFhV/Jr3uNmTvvddEJFWh5R1gRgUH8A==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -4707,6 +4733,15 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
+  vue3-toastify@0.2.1:
+    resolution: {integrity: sha512-u4i5LCu1q5qs4L4Kbjb4u8NipCS8ox1fCHQ6XFS62676xnA6Q/AJRpZEkAurTMp723LeH6eQX6k9+24bKf1T4Q==}
+    engines: {node: '>=16', npm: '>=7'}
+    peerDependencies:
+      vue: '>=3.2.0'
+    peerDependenciesMeta:
+      vue:
+        optional: true
+
   vue@3.4.26:
     resolution: {integrity: sha512-bUIq/p+VB+0xrJubaemrfhk1/FiW9iX+pDV+62I/XJ6EkspAO9/DXEjbDFoe8pIfOZBqfk45i9BMc41ptP/uRg==}
     peerDependencies:
@@ -5406,9 +5441,9 @@ snapshots:
     dependencies:
       '@lezer/common': 1.2.1
 
-  '@lucia-auth/adapter-prisma@4.0.1(@prisma/client@5.13.0)(lucia@3.2.0)':
+  '@lucia-auth/adapter-prisma@4.0.1(@prisma/client@5.13.0(prisma@5.13.0))(lucia@3.2.0)':
     dependencies:
-      '@prisma/client': 5.13.0
+      '@prisma/client': 5.13.0(prisma@5.13.0)
       lucia: 3.2.0
 
   '@mapbox/node-pre-gyp@1.0.11(encoding@0.1.13)':
@@ -6000,7 +6035,30 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
-  '@prisma/client@5.13.0': {}
+  '@prisma/client@5.13.0(prisma@5.13.0)':
+    optionalDependencies:
+      prisma: 5.13.0
+
+  '@prisma/debug@5.13.0': {}
+
+  '@prisma/engines-version@5.13.0-23.b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b': {}
+
+  '@prisma/engines@5.13.0':
+    dependencies:
+      '@prisma/debug': 5.13.0
+      '@prisma/engines-version': 5.13.0-23.b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+      '@prisma/fetch-engine': 5.13.0
+      '@prisma/get-platform': 5.13.0
+
+  '@prisma/fetch-engine@5.13.0':
+    dependencies:
+      '@prisma/debug': 5.13.0
+      '@prisma/engines-version': 5.13.0-23.b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
+      '@prisma/get-platform': 5.13.0
+
+  '@prisma/get-platform@5.13.0':
+    dependencies:
+      '@prisma/debug': 5.13.0
 
   '@replit/codemirror-indentation-markers@6.5.1(@codemirror/language@6.10.1)(@codemirror/state@6.4.1)(@codemirror/view@6.26.3)':
     dependencies:
@@ -9278,6 +9336,10 @@ snapshots:
 
   pretty-bytes@6.1.1: {}
 
+  prisma@5.13.0:
+    dependencies:
+      '@prisma/engines': 5.13.0
+
   proc-log@3.0.0: {}
 
   proc-log@4.2.0: {}
@@ -10311,6 +10373,10 @@ snapshots:
       vue: 3.4.26(typescript@5.4.5)
       vue-observe-visibility: 2.0.0-alpha.1(vue@3.4.26(typescript@5.4.5))
       vue-resize: 2.0.0-alpha.1(vue@3.4.26(typescript@5.4.5))
+
+  vue3-toastify@0.2.1(vue@3.4.26(typescript@5.4.5)):
+    optionalDependencies:
+      vue: 3.4.26(typescript@5.4.5)
 
   vue@3.4.26(typescript@5.4.5):
     dependencies:

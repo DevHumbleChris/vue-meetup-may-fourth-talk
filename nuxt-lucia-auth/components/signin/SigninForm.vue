@@ -2,11 +2,11 @@
 import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
+import { toast } from "vue3-toastify";
 
 import { Button } from "~/components/ui/button";
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -30,7 +30,8 @@ const form = useForm({
 });
 
 const onSubmit = form.handleSubmit((values) => {
-  console.log("Form submitted!", values);
+  console.log(values);
+  toast.success("Form submitted!");
 });
 </script>
 
