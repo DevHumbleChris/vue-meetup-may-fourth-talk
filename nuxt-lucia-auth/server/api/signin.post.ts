@@ -30,6 +30,9 @@ export default eventHandler(async (event) => {
       where: {
         email,
       },
+      include: {
+        profile: true,
+      },
     });
 
     if (!user) {
@@ -57,6 +60,8 @@ export default eventHandler(async (event) => {
       "Set-Cookie",
       lucia.createSessionCookie(session.id).serialize()
     );
+
+    return user;
   } catch (error: any) {
     throw createError({
       message: error.message,

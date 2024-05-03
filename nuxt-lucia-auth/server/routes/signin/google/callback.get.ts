@@ -48,7 +48,7 @@ export default defineEventHandler(async (event) => {
         "Set-Cookie",
         lucia.createSessionCookie(session.id).serialize()
       );
-      return sendRedirect(event, "/");
+      return sendRedirect(event, "/account/onboarding");
     }
 
     const userId = generateId(15);

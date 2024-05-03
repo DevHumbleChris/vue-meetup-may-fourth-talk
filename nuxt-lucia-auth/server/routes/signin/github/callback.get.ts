@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
         "Set-Cookie",
         lucia.createSessionCookie(session.id).serialize()
       );
-      return sendRedirect(event, "/");
+      return sendRedirect(event, "/account/onboarding");
     }
 
     const userId = generateId(15);
@@ -57,15 +57,25 @@ export default defineEventHandler(async (event) => {
             userName: githubUser.login,
           },
         },
+        profile: {
+          create: {
+            email: githubUser.email ? githubUser.email : "",
+            imageUrl: githubUser.avatar_url,
+            location: "",
+            name: githubUser.login,
+            username: "",
+          },
+        },
       },
     });
+
     const session = await lucia.createSession(userId, {});
     appendHeader(
       event,
       "Set-Cookie",
       lucia.createSessionCookie(session.id).serialize()
     );
-    return sendRedirect(event, "/");
+    return sendRedirect(event, "/account/onboarding");
   } catch (e) {
     console.log(e);
     if (

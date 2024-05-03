@@ -4,6 +4,20 @@ import SigninForm from "~/components/signin/SigninForm.vue";
 useHead({
   titleTemplate: "%s - Signin",
 });
+
+const user = useUser();
+
+watch(
+  user,
+  () => {
+    if (user.value) {
+      navigateTo("/account/profile");
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <template>
@@ -31,7 +45,8 @@ useHead({
           <div class="p-10 bg-white border shadow-lg rounded-3xl">
             <div>
               <div class="space-y-2">
-                <button
+                <a
+                  href="/signin/google"
                   class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   type="button"
                   aria-label="Sign in with Google"
@@ -43,9 +58,10 @@ useHead({
                     aria-label="logo google"
                   />
                   <span>Sign in with Google</span>
-                </button>
+                </a>
 
-                <button
+                <a
+                  href="/signin/github"
                   class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   type="button"
                   aria-label="Sign in with GitHub"
@@ -57,7 +73,7 @@ useHead({
                     aria-label="logo google"
                   />
                   <span>Sign in with GitHub</span>
-                </button>
+                </a>
               </div>
               <div class="relative py-3">
                 <div

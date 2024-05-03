@@ -1,10 +1,49 @@
 <script setup lang="ts">
+import { Loader2 } from "lucide-vue-next";
+import { toast } from "vue3-toastify";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 
 definePageMeta({
   middleware: ["protected"],
 });
+
+useHead({
+  titleTemplate: "%s - Profile",
+});
+
+const user = useAuthenticatedUser();
+
+const {
+  data: profile,
+  error,
+  refresh,
+} = await useFetch("/api/profile", {
+  watch: [user.value],
+});
+
+const isLoggingOut = useState("isLoggingOut", () => false);
+const globalUser = useUser();
+
+const handleUserSignout = async () => {
+  isLoggingOut.value = true;
+  try {
+    await $fetch("/api/signout", {
+      method: "POST",
+    });
+    await useRequestFetch()("/api/user");
+
+    globalUser.value = null;
+    return await navigateTo("/auth/signin");
+  } catch (error: any) {
+    const errorMessage = error.data?.message ?? null;
+    toast.error(errorMessage, {
+      theme: "colored",
+    });
+  } finally {
+    isLoggingOut.value = false;
+  }
+};
 </script>
 
 <template>
@@ -40,10 +79,7 @@ definePageMeta({
         </svg>
         <div class="absolute bottom-0 sm:bottom-4 left-4 sm:left-10">
           <Avatar class="size-20">
-            <AvatarImage
-              src="https://images.unsplash.com/photo-1659482634023-2c4fda99ac0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2.5&w=320&h=320&q=80"
-              alt="profile.name"
-            />
+            <AvatarImage :src="profile?.imageUrl!" :alt="profile?.name" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
@@ -51,10 +87,10 @@ definePageMeta({
           <p
             class="text-sm text-zinc-700 mt-1 font-semibold dark:text-zinc-200"
           >
-            member.profile.name
+            {{ profile?.name }}
           </p>
           <p class="text-xs text-zinc-500 font-normal dark:text-zinc-400">
-            @member.profile.username
+            @{{ profile?.username }}
           </p>
         </div>
       </figure>
@@ -75,7 +111,7 @@ definePageMeta({
         <h3 class="text-xs text-zinc-500 dark:text-zinc-400">Location</h3>
 
         <p class="text-sm text-zinc-700 font-medium dark:text-zinc-200">
-          {member.profile.location}
+          {{ profile?.location }}
         </p>
       </div>
 
@@ -83,15 +119,17 @@ definePageMeta({
         <h3 class="text-xs text-zinc-500 dark:text-zinc-400">Email</h3>
 
         <p class="text-sm text-zinc-700 font-medium dark:text-zinc-200">
-          {member.profile.email}
+          {{ profile?.email }}
         </p>
       </div>
 
       <Button
+        @click="handleUserSignout"
         variant="outline"
-        class="w-full hover:border-emerald-500 hover:bg-white hover:text-emerald-500 transition dark:hover:bg-transparent dark:hover:border-white dark:hover:text-white"
+        class="w-full gap-x-2 hover:border-emerald-500 hover:bg-white hover:text-emerald-500 transition dark:hover:bg-transparent dark:hover:border-white dark:hover:text-white"
       >
-        Sign out
+        <Loader2 v-if="isLoggingOut" class="animate-spin size-4" />
+        <span v-else>{{ isLoggingOut ? "Signing out..." : "Sign out" }}</span>
       </Button>
     </div>
   </section>

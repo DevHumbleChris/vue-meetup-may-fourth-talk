@@ -4,17 +4,34 @@ import SignupForm from "~/components/signup/SignupForm.vue";
 useHead({
   titleTemplate: "%s - Signup",
 });
+
+const user = useUser();
+
+watch(
+  user,
+  () => {
+    if (user.value) {
+      navigateTo("/account/profile");
+    }
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <template>
   <section>
-    <div class="px-8 py-12 mx-auto md:px-12 xl:px-32 max-w-7xl">
-      <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
-        <div class="p-2 border bg-gray-50 rounded-3xl">
+    <div class="sm:px-8 py-6 mx-auto md:px-12 xl:px-32 max-w-7xl">
+      <div
+        class="flex flex-col-reverse sm:grid items-center gap-12 lg:grid-cols-5 lg:gap-24"
+      >
+        <div class="sm:col-span-3 p-2 border bg-gray-50 rounded-3xl">
           <div class="p-10 bg-white border shadow-lg rounded-3xl">
             <div>
               <div class="space-y-2">
-                <button
+                <a
+                  href="/signin/google"
                   class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   type="button"
                   aria-label="Sign in with Google"
@@ -26,9 +43,10 @@ useHead({
                     aria-label="logo google"
                   />
                   <span>Sign in with Google</span>
-                </button>
+                </a>
 
-                <button
+                <a
+                  href="/signin/github"
                   class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   type="button"
                   aria-label="Sign in with GitHub"
@@ -40,7 +58,7 @@ useHead({
                     aria-label="logo google"
                   />
                   <span>Sign in with GitHub</span>
-                </button>
+                </a>
               </div>
               <div class="relative py-3">
                 <div
@@ -59,7 +77,7 @@ useHead({
             <SignupForm />
           </div>
         </div>
-        <div class="flex flex-col">
+        <div class="px-8 sm:px-0 sm:col-span-2 flex flex-col">
           <RouterLink to="/" class="mb-4">
             <img
               src="https://shuffle.dev/gradia-assets/logos/gradia-name-white.svg"

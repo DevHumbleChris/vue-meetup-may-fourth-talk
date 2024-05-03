@@ -5,7 +5,8 @@ import { isValidEmail } from "../utils/validation";
 import { lucia } from "../utils/auth";
 
 export default eventHandler(async (event) => {
-  const { email, password } = await readBody(event);
+  // const { session } = await validate
+  const { email, password, fullname } = await readBody(event);
 
   if (!email || typeof email !== "string" || !isValidEmail(email)) {
     throw createError({
@@ -43,11 +44,23 @@ export default eventHandler(async (event) => {
       });
     }
 
-    await prisma.user.create({
+    const createdUser = await prisma.user.create({
       data: {
         id: userId,
         email,
         password: hashedPassword,
+      },
+    });
+
+    const profile = await prisma.profile.create({
+      data: {
+        email,
+        imageUrl:
+          "https://res.cloudinary.com/dfa1yoc1v/image/upload/v1712306335/fp7ozwhi8wabqhaml46b.jpg",
+        location: "",
+        userId: createdUser.id,
+        name: fullname,
+        username: "",
       },
     });
 
@@ -57,6 +70,8 @@ export default eventHandler(async (event) => {
       "Set-Cookie",
       lucia.createSessionCookie(session.id).serialize()
     );
+
+    return profile;
   } catch (error: any) {
     throw createError({
       message: error.message,

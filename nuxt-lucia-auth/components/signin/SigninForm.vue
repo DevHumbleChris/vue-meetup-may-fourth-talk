@@ -39,12 +39,18 @@ const isSubmitting = computed(() => {
 const onSubmit = form.handleSubmit(async (values) => {
   try {
     isSignin.value = true;
-    await $fetch("/api/signin", {
+    const loggedUser = await $fetch("/api/signin", {
       method: "POST",
       body: {
         ...values,
       },
     });
+
+    toast.success(`Welcome back, ${loggedUser.profile?.name}`, {
+      theme: "colored",
+    });
+
+    await navigateTo("/account/profile");
   } catch (error: any) {
     const errorMessage = error.data?.message ?? error.message;
     toast.error(errorMessage, {
