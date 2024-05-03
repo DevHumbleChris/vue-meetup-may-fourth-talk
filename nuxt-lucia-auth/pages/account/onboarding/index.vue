@@ -91,6 +91,8 @@ const { data: profile } = await useFetch("/api/profile", {
   watch: [user.value],
 });
 
+console.log(profile);
+
 onBeforeMount(async () => {
   if (profile.value?.location && profile.value.username) {
     await navigateTo("/account/profile");

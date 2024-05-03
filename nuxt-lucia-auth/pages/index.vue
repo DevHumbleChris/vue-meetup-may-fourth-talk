@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Procedure from "~/components/homepage/Procedure.vue";
+</script>
+
 <template>
   <section>
     <div class="px-8 py-20 mx-auto md:px-12 lg:px-32 max-w-7xl">
@@ -58,5 +62,6 @@
         </dl>
       </div>
     </div>
+    <Procedure />
   </section>
 </template>

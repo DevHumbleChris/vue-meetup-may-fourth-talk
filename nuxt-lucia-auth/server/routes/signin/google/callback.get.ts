@@ -65,6 +65,15 @@ export default defineEventHandler(async (event) => {
             userName: googleUser.name,
           },
         },
+        profile: {
+          create: {
+            email: googleUser.email,
+            imageUrl: googleUser.picture,
+            location: "",
+            name: googleUser.name,
+            username: "",
+          },
+        },
       },
     });
     const session = await lucia.createSession(userId, {});
@@ -73,7 +82,7 @@ export default defineEventHandler(async (event) => {
       "Set-Cookie",
       lucia.createSessionCookie(session.id).serialize()
     );
-    return sendRedirect(event, "/");
+    return sendRedirect(event, "/account/onboarding");
   } catch (e) {
     if (
       e instanceof OAuth2RequestError &&

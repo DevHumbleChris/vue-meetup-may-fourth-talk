@@ -34,7 +34,7 @@ watch(
                   href="/signin/google"
                   class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   type="button"
-                  aria-label="Sign in with Google"
+                  aria-label="Sign up with Google"
                 >
                   <Icon
                     name="logos:google-icon"
@@ -42,14 +42,14 @@ watch(
                     class="md hydrated"
                     aria-label="logo google"
                   />
-                  <span>Sign in with Google</span>
+                  <span>Sign up with Google</span>
                 </a>
 
                 <a
                   href="/signin/github"
                   class="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   type="button"
-                  aria-label="Sign in with GitHub"
+                  aria-label="Sign up with GitHub"
                 >
                   <Icon
                     name="lucide:github"
@@ -57,7 +57,7 @@ watch(
                     class="md hydrated"
                     aria-label="logo google"
                   />
-                  <span>Sign in with GitHub</span>
+                  <span>Sign up with GitHub</span>
                 </a>
               </div>
               <div class="relative py-3">
