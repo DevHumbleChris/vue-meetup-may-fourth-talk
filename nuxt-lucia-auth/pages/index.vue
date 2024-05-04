@@ -62,6 +62,25 @@ import Procedure from "~/components/homepage/Procedure.vue";
         </dl>
       </div>
     </div>
+    <section>
+      <div class="px-8 pt-6 pb-12 mx-auto md:px-12 max-w-7xl">
+        <div class="w-full lg:col-span-2">
+          <h1
+            class="text-4xl font-semibold tracking-tighter text-gray-900 lg:text-6xl text-balance"
+          >
+            In today's talk, we'll explore how Lucia makes implementing
+            authentication a breeze.
+          </h1>
+        </div>
+        <p class="mt-4 text-base font-medium text-gray-500 text-balance">
+          Covering everything from traditional email/password authentication to
+          seamless integration with multiple OAuth providers. So buckle up as we
+          embark on a journey to streamline authentication in your applications,
+          making it easier, more secure, and more user-friendly than ever
+          before.
+        </p>
+      </div>
+    </section>
     <Procedure />
   </section>
 </template>
