@@ -16,6 +16,10 @@ import {
 import { Input } from "~/components/ui/input";
 import { toast } from "vue3-toastify";
 
+definePageMeta({
+  middleware: ["protected"],
+});
+
 const user = useAuthenticatedUser();
 
 const avatars = useState("avatars", () => [

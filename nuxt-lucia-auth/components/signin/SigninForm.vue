@@ -50,6 +50,8 @@ const onSubmit = form.handleSubmit(async (values) => {
       theme: "colored",
     });
 
+    form.resetForm();
+
     await navigateTo("/account/profile");
   } catch (error: any) {
     const errorMessage = error.data?.message ?? error.message;

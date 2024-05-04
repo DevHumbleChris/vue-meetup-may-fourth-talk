@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "nuxt-icon",
     "nuxt-og-image",
-    "nuxt-shiki"
+    "nuxt-shiki",
   ],
   shadcn: {
     /**
@@ -25,5 +25,9 @@ export default defineNuxtConfig({
     googleClientId: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
     googleRedirect: process.env.GGOOGLE_REDIRECT_URI,
+  },
+  shiki: {
+    defaultTheme: "vitesse-light",
+    defaultLang: "bash",
   },
 });

@@ -40,7 +40,7 @@ import { Button } from "../ui/button";
         <div class="flex-shrink-0">
           <div>
             <ul
-              class="grid grid-cols-1 gap-12 mt-6 text-base font-medium text-gray-500 list-none lg:mt-0 text-balance"
+              class="grid grid-cols-1 gap-6 mt-6 text-base font-medium text-gray-500 list-none lg:mt-0 text-balance"
               role="list"
             >
               <li>
@@ -54,94 +54,103 @@ import { Button } from "../ui/button";
                   a set of basic, standardized querying methods that Lucia can
                   use.
                 </div>
-              </li>
-              <li>
-                <div>
-                  <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Prebuilt integrations</p>
-                </div>
                 <div class="mt-2">
-                  Join Lexingtøn Themes engineers and designers for a technical
-                  look at Lexingtøn Themes Apps. You’ll hear directly from the
-                  makers, get a full developer demo, and leave the session with
-                  everything you need to get started.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Tools for every stack</p>
-                </div>
-                <div class="mt-2">
-                  To achieve global net zero emissions by 2050, we need not only
-                  to reduce emissions but also remove huge amounts of carbon
-                  from the atmosphere and oceans. Learn more about Lexingtøn
-                  Themes Climate’s work to build the world’s largest carbon
-                  removal coalition and invest in the most promising early-stage
-                  solutions.
+                  In this tutorial we are going to use
+                  <a
+                    href="https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-mysql"
+                    class="text-emerald-500 font-medium inline underline"
+                    target="_blank"
+                    >Prisma</a
+                  >, follow the link and set it up on your machine. We will be
+                  using it alongside a relational database,
+                  <span class="text-emerald-500 font-medium">MySQL</span>.
                 </div>
               </li>
               <li>
                 <div>
                   <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Tools for every stack</p>
+                  <p class="mt-5 text-lg text-black">Database Schema</p>
                 </div>
                 <div class="mt-2">
-                  Banking-as-a-service (BaaS) has made it possible for any
-                  company to easily offer financial services tailored to
-                  customers’ specific needs. Hear from a range of businesses on
-                  how they're using BaaS in radically different ways.
+                  After installing
+                  <span class="text-emerald-500 font-medium">Prisma</span>, we
+                  need to define the database schema. In this case we will
+                  declare two important Models that Lucia will use,
+                  <span class="text-emerald-500 font-medium">User</span> and
+                  <span class="text-emerald-500 font-medium">Session</span>.
+                  However we will add another Model,
+                  <span class="text-emerald-500 font-medium">Profile</span> that
+                  we will extend to our other models.
+                </div>
+
+                <a
+                  href="https://github.com/DevHumbleChris/vue-meetup-may-fourth-talk/blob/main/nuxt-lucia-auth/prisma/schema.prisma"
+                  target="_blank"
+                  class="mt-1 text-xs hover:underline"
+                  >shema.prisma</a
+                >
+              </li>
+              <li>
+                <div>
+                  <div>❖</div>
+                  <p class="mt-5 text-lg text-black">Prisma Adapter</p>
+                </div>
+                <div class="mt-2">
+                  Since we will be using
+                  <span class="text-emerald-500 font-medium">Prisma</span>. We
+                  need to install the Prisma adapter and the Lucia package.
+                </div>
+                <div class="mt-2">
+                  <div class="px-5 py-3 bg-gray-50">
+                    <Shiki
+                      lang="bash"
+                      code="pnpm add @lucia-auth/adapter-prisma lucia"
+                    />
+                  </div>
                 </div>
               </li>
               <li>
                 <div>
                   <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Tools for every stack</p>
+                  <p class="mt-5 text-lg text-black">
+                    Additional Packages to install
+                  </p>
                 </div>
                 <div class="mt-2">
-                  Competing in the $5 trillion global ecommerce market requires
-                  an international presence that doesn’t get lost in
-                  translation. Join us as we traverse the globe to explore the
-                  many benefits of offering localized, optimized payment
-                  experiences that are achievable in minutes, not months.
+                  For a successfull authentication with Lucia Auth, we will need
+                  additional packages,
+                  <a
+                    href="https://arctic.js.org/"
+                    target="_blank"
+                    class="text-emerald-500 font-medium inline hover:underline"
+                    >Artic</a
+                  >
+                  (Arctic is a TypeScript library that provides OAuth 2.0 and
+                  OpenID Connect clients for major providers.) and
+                  <a
+                    href="https://oslo.js.org/"
+                    target="_blank"
+                    class="text-emerald-500 font-medium inline hover:underline"
+                    >Oslo</a
+                  >
+                  (Oslo provides a bunch of auth utilities).
+                </div>
+                <div class="mt-2">
+                  <div class="px-5 py-3 bg-gray-50">
+                    <Shiki lang="bash" code="pnpm add oslo arctic" />
+                  </div>
                 </div>
               </li>
               <li>
                 <div>
                   <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Prebuilt integrations</p>
+                  <p class="mt-5 text-lg text-black">Server Utils Auth File</p>
                 </div>
                 <div class="mt-2">
-                  Join Lexingtøn Themes engineers and designers for a technical
-                  look at Lexingtøn Themes Apps. You’ll hear directly from the
-                  makers, get a full developer demo, and leave the session with
-                  everything you need to get started.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Tools for every stack</p>
-                </div>
-                <div class="mt-2">
-                  To achieve global net zero emissions by 2050, we need not only
-                  to reduce emissions but also remove huge amounts of carbon
-                  from the atmosphere and oceans. Learn more about Lexingtøn
-                  Themes Climate’s work to build the world’s largest carbon
-                  removal coalition and invest in the most promising early-stage
-                  solutions.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <div>❖</div>
-                  <p class="mt-5 text-lg text-black">Tools for every stack</p>
-                </div>
-                <div class="mt-2">
-                  Banking-as-a-service (BaaS) has made it possible for any
-                  company to easily offer financial services tailored to
-                  customers’ specific needs. Hear from a range of businesses on
-                  how they're using BaaS in radically different ways.
+                  This is a crucial file where we will import Lucia and
+                  initialize it with our Prisma Adapter. Additionally, it is
+                  also the file where we will set up the OAuth providers with
+                  the Artic package and export them.
                 </div>
               </li>
             </ul>

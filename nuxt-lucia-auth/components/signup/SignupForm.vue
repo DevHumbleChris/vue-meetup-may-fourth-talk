@@ -64,8 +64,8 @@ const onSubmit = form.handleSubmit(async (values) => {
     toast.success(`Welcome, ${userProfile.name}`, {
       theme: "colored",
     });
-
-    await navigateTo("/account/profile");
+    form.resetForm();
+    await navigateTo("/account/onboarding");
   } catch (error: any) {
     const errorMessage = error.data?.message ?? error.message;
     toast.error(errorMessage, {
